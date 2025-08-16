@@ -1,14 +1,15 @@
-import {useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {registerUser, setFalseRegister} from "../store/actions/authAction.jsx";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser, setFalseRegister } from "../store/actions/authAction.jsx";
 import toast from "react-hot-toast";
 
 const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const {isRegister, registerError} = useSelector(state => state.auth);
+    const { isRegister, registerError } = useSelector(state => state.auth);
     const [error, setError] = useState('');
+
     const [formData, setFormData] = useState({
         fullname: "",
         email: "",
@@ -18,7 +19,7 @@ const Register = () => {
     });
 
     const handleChange = (e) => {
-        const {name, value, type, checked} = e.target;
+        const { name, value, type, checked } = e.target;
         setFormData({
             ...formData,
             [name]: type === "checkbox" ? checked : value,
@@ -28,10 +29,10 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if( formData?.password !== formData?.confirmPassword ) {
-            setError('Confirm password does not match');
-        } else if( !formData.terms ) {
-            setError('Term must be checked');
+        if (formData?.password !== formData?.confirmPassword) {
+            setError('Confirm password not match');
+        } else if (!formData.terms) {
+            setError('Term checked');
         }
         else {
             dispatch(registerUser(formData))
@@ -44,7 +45,7 @@ const Register = () => {
 
     useEffect(() => {
         if (isRegister) {
-            toast.success("Register successfully!");
+            toast.success("Register success!");
             dispatch(setFalseRegister())
             navigate("/login")
         }
@@ -113,7 +114,7 @@ const Register = () => {
                         />
                         <label className="text-gray-700">
                             I agree to the <a href="#" className="text-blue-500 hover:underline">terms and
-                            conditions</a>
+                                conditions</a>
                         </label>
                     </div>
                     <button
