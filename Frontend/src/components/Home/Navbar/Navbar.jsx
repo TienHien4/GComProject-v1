@@ -1,18 +1,18 @@
-import {IoIosSettings, IoMdClose, IoMdMenu} from "react-icons/io";
-import {motion} from "framer-motion";
-import {useDispatch, useSelector} from "react-redux";
-import {logoutUser} from "../../../store/actions/authAction.jsx";
-import {Link, useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {FaChevronDown, FaChevronRight, FaChevronLeft, FaPlug, FaPencilAlt, FaLightbulb, FaStar} from "react-icons/fa";
-import {MdOutlineEngineering, MdOutlineForwardToInbox} from "react-icons/md"
-import {SlCalender} from "react-icons/sl";
-import {AiTwotoneThunderbolt} from "react-icons/ai";
-import {GrTemplate} from "react-icons/gr";
-import {HiSpeakerphone} from "react-icons/hi";
-import {HiClipboardDocumentList} from "react-icons/hi2";
-import {PiBagSimpleFill} from "react-icons/pi";
-import {LuBuilding2, LuEarth} from "react-icons/lu";
+import { IoIosSettings, IoMdClose, IoMdMenu } from "react-icons/io";
+import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../../store/actions/authAction.jsx";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { FaChevronDown, FaChevronRight, FaChevronLeft, FaPlug, FaPencilAlt, FaLightbulb, FaStar } from "react-icons/fa";
+import { MdOutlineEngineering, MdOutlineForwardToInbox } from "react-icons/md"
+import { SlCalender } from "react-icons/sl";
+import { AiTwotoneThunderbolt } from "react-icons/ai";
+import { GrTemplate } from "react-icons/gr";
+import { HiSpeakerphone } from "react-icons/hi";
+import { HiClipboardDocumentList } from "react-icons/hi2";
+import { PiBagSimpleFill } from "react-icons/pi";
+import { LuBuilding2, LuEarth } from "react-icons/lu";
 import toast from "react-hot-toast";
 
 
@@ -37,13 +37,13 @@ const NavbarMenu = [
             },
             {
                 title: "Automation",
-                description: "Automate tasks and workflows with Butler automation.",
+                description: "Automate tasks and workflows with Butler automatic.",
                 icon: AiTwotoneThunderbolt,
             },
             {
                 title: "Power-Ups",
                 description:
-                    "Power up your teams by linking their favorite tools with Trello plugins.",
+                    "Power up your teams by linking their favorite tools with Trello plugins main tain.",
                 icon: FaPlug,
             },
             {
@@ -193,7 +193,7 @@ const Navbar = () => {
     const [activeMenuItem, setActiveMenuItem] = useState(null);
     const navigate = useNavigate()
     const dispatch = useDispatch();
-    const {isLoginUser} = useSelector((state) => state.auth);
+    const { isLoginUser } = useSelector((state) => state.auth);
 
     const handleLogout = async () => {
         try {
@@ -225,8 +225,8 @@ const Navbar = () => {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md md:rounnd-md max-h-16 flex items-center">
             <motion.div
-                initial={{opacity: 0, y: -50}}
-                animate={{opacity: 1, y: 0}}
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
                 className="container py-10 flex justify-between items-center"
             >
                 {/* Logo section */}
@@ -245,25 +245,23 @@ const Navbar = () => {
                                     <Link
                                         to={'/pricing'}
                                         className={`flex items-center gap-1 py-2 px-3 hover:text-secondary group cursor-pointer
-                                    ${
-                                            dropdownOpen === menu.id
+                                    ${dropdownOpen === menu.id
                                                 ? "text-blue-400 border-b-2 border-blue-400"
                                                 : ""
-                                        }`}
+                                            }`}
                                     >
-                                        {menu.title} <FaChevronDown className="h-3"/>
+                                        {menu.title} <FaChevronDown className="h-3" />
                                     </Link>
                                 ) : (
                                     <div
                                         onClick={() => toggleDropdown(menu.id)}
                                         className={`flex items-center gap-1 py-2 px-3 hover:text-secondary group cursor-pointer
-                                    ${
-                                            dropdownOpen === menu.id
+                                    ${dropdownOpen === menu.id
                                                 ? "text-blue-400 border-b-2 border-blue-400"
                                                 : ""
-                                        }`}
+                                            }`}
                                     >
-                                        {menu.title} <FaChevronDown className="h-3"/>
+                                        {menu.title} <FaChevronDown className="h-3" />
                                     </div>
                                 )}
 
@@ -275,7 +273,7 @@ const Navbar = () => {
                                         <div className="grid grid-cols-3 gap-x-8 gap-y-6">
                                             {menu.dropdown.map((item, index) => (
                                                 <div key={index} className="flex items-start gap-3">
-                                                    {item.icon !== "" && <item.icon className="text-xl"/>}
+                                                    {item.icon !== "" && <item.icon className="text-xl" />}
                                                     <div>
                                                         <h4 className="font-medium text-sm">
                                                             {item.title}
@@ -305,14 +303,13 @@ const Navbar = () => {
 
                 {/* Mobile Hamburger menu section */}
                 <button onClick={() => setMenuOpen(true)} className="lg:hidden">
-                    <IoMdMenu className="text-4xl"/>
+                    <IoMdMenu className="text-4xl" />
                 </button>
 
                 {menuOpen && (
                     <div
-                        className={`fixed top-0 right-0 w-full h-full bg-white shadow-lg transform transition-transform duration-300 z-40 ${
-                            menuOpen ? "translate-y-0" : "-translate-y-full"
-                        }`}
+                        className={`fixed top-0 right-0 w-full h-full bg-white shadow-lg transform transition-transform duration-300 z-40 ${menuOpen ? "translate-y-0" : "-translate-y-full"
+                            }`}
                     >
                         <div className="p-5 flex justify-between items-center border-b">
                             {activeMenuItem !== null ? (
@@ -321,18 +318,18 @@ const Navbar = () => {
                                         onClick={() => setActiveMenuItem(null)}
                                         className="text-xl flex items-center"
                                     >
-                                        <FaChevronLeft className="h-3"/> Back
+                                        <FaChevronLeft className="h-3" /> Back
                                     </button>
 
                                     <button onClick={() => setMenuOpen(false)}>
-                                        <IoMdClose className="text-3xl"/>
+                                        <IoMdClose className="text-3xl" />
                                     </button>
                                 </>
                             ) : (
                                 <>
                                     <h2 className="text-xl font-semibold">GCom</h2>
                                     <button onClick={() => setMenuOpen(false)}>
-                                        <IoMdClose className="text-3xl"/>
+                                        <IoMdClose className="text-3xl" />
                                     </button>
                                 </>
                             )}
@@ -347,7 +344,7 @@ const Navbar = () => {
                                                 onClick={() => setActiveMenuItem(item.id)}
                                                 className="flex items-center justify-between gap-1 py-2 hover:text-blue-600 cursor-pointer border-b-2"
                                             >
-                                                {item.title} <FaChevronRight className="h-3"/>
+                                                {item.title} <FaChevronRight className="h-3" />
                                             </div>
                                         </li>
                                     ))}
@@ -378,7 +375,7 @@ const Navbar = () => {
                                         <div key={index} className="py-2 border-b">
                                             <div className={'flex items-center gap-2'}>
                                                 {subItem.icon !== '' &&
-                                                    <subItem.icon className="text-xl"/>
+                                                    <subItem.icon className="text-xl" />
                                                 }
                                                 <h4 className="font-medium">
                                                     {subItem.title}

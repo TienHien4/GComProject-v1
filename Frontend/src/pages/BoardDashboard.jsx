@@ -155,6 +155,7 @@ function BoardDashboard() {
                                                     </th>
                                                     <td className="px-6 py-4">{member?.email}</td>
                                                     <td className="px-6 py-4">{member?.taskCount.toLocaleString('vi-VN')}</td>
+                                                    {/* nho responsive */}
                                                 </tr>
                                             ))}
                                             </tbody>
