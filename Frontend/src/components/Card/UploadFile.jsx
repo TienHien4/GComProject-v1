@@ -1,9 +1,9 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import toast from "react-hot-toast";
-import {uploadAttachment} from "../../store/actions/attachmentAction.jsx";
-import {useDispatch} from "react-redux";
+import { uploadAttachment } from "../../store/actions/attachmentAction.jsx";
+import { useDispatch } from "react-redux";
 
-const UploadFile = ({cardId}) => {
+const UploadFile = ({ cardId }) => {
     const [file, setFile] = useState(null);
     const dispatch = useDispatch();
     const handleFileChange = (e) => {
@@ -20,7 +20,7 @@ const UploadFile = ({cardId}) => {
 
         try {
             await dispatch(uploadAttachment(formData)).unwrap();
-            toast.success('Attachment successfully uploaded');
+            toast.success('Attachment successfully uploaded to card');
         } catch (err) {
             toast.error(err);
         }
