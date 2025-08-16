@@ -1,10 +1,10 @@
 import NavbarWorkspace from "../components/Workspace/Navbar/Navbar-Workspace.jsx";
 import SidebarBoard from "../components/Board/SidebarBoard.jsx";
-import {useEffect, useState} from "react";
-import {useLocation, useNavigate} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {GoPlus} from "react-icons/go";
-import {deleteWorkspace, getWorkspaceByWorkspaceId} from "../store/actions/workspaceAction.jsx";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { GoPlus } from "react-icons/go";
+import { deleteWorkspace, getWorkspaceByWorkspaceId } from "../store/actions/workspaceAction.jsx";
 import toast from "react-hot-toast";
 import AddMemberModal from "../components/Member/AddMemberModal.jsx";
 
@@ -23,25 +23,27 @@ const WorkspaceSetting = () => {
 
     const handleDeleteWorkspace = () => {
         dispatch(deleteWorkspace(workspaceId));
-        if(!error){
+        if (!error) {
             navigate('/user-workspace')
             toast.success('Deleted Workspace Successfully');
-        }else {
+        } else {
             toast.error('Deleted Workspace Failed!');
         }
 
     }
+
+
     return (
         <div className="flex flex-col h-screen">
             {/* Navbar cố định trên cùng */}
             <div className="shrink-0 bg-gray-200">
-                <NavbarWorkspace/>
+                <NavbarWorkspace />
             </div>
 
             {/* Phần dưới: chia 2 cột (Sidebar trái - Nội dung phải) */}
             <div className="flex">
                 <div className="w-72 shrink-0 hidden md:flex border-r-2 border-gray-200">
-                    <SidebarBoard/>
+                    <SidebarBoard />
                 </div>
                 <div className="flex flex-col items-center w-full m-4">
                     {/* Header */}
@@ -62,12 +64,12 @@ const WorkspaceSetting = () => {
                                 className="bg-blue-600 text-white px-4 py-1 rounded-sm flex items-center space-x-2 mt-4 md:mt-0"
                                 onClick={() => setIsMemberModalOpen(true)}
                             >
-                                <GoPlus/>
+                                <GoPlus />
                                 <span>Invite Workspace members</span>
                             </button>
                         </div>
 
-                        <hr className={'border-r-2 border-gray-300 mb-4'}/>
+                        <hr className={'border-r-2 border-gray-300 mb-4'} />
 
                         {/* Main Content */}
                         <div className="max-w-3xl">
@@ -76,7 +78,7 @@ const WorkspaceSetting = () => {
                             {/* Workspace Visibility */}
                             <div className="mb-6">
                                 <h3 className="text-lg font-semibold mb-2">Workspace visibility</h3>
-                                <hr className={'border-r-2 border-gray-300'}/>
+                                <hr className={'border-r-2 border-gray-300'} />
                                 <div
                                     className="block md:flex md:justify-between md:items-center bg-white p-4 rounded-lg shadow-xs">
                                     <div className="flex items-center space-x-2">
@@ -95,7 +97,7 @@ const WorkspaceSetting = () => {
                             {/* Sharing Boards with Guests */}
                             <div className="mb-6">
                                 <h3 className="text-lg font-semibold mb-2">Sharing boards with guests</h3>
-                                <hr className={'border-r-2 border-gray-300'}/>
+                                <hr className={'border-r-2 border-gray-300'} />
                                 <div
                                     className="block md:flex md:justify-between md:items-center bg-white p-4 rounded-lg shadow-xs">
                                     <div className="flex items-center space-x-2">
@@ -152,7 +154,7 @@ const WorkspaceSetting = () => {
                                             {/* Thông tin yêu cầu nhập tên Workspace */}
                                             <p className="text-sm text-gray-600 mb-2">
                                                 Enter the Workspace name <span
-                                                className="font-semibold">"{workspace?.name}"</span> to delete
+                                                    className="font-semibold">"{workspace?.name}"</span> to delete
                                             </p>
 
                                             {/* Danh sách cảnh báo */}
@@ -181,11 +183,10 @@ const WorkspaceSetting = () => {
                                             {/* Nút xóa */}
                                             <button
                                                 disabled={workspaceInput !== workspace?.name}
-                                                className={`w-full py-2 rounded text-white ${
-                                                    workspaceInput === workspace?.name
+                                                className={`w-full py-2 rounded text-white ${workspaceInput === workspace?.name
                                                         ? "bg-red-600 hover:bg-red-700"
                                                         : "bg-gray-300 cursor-not-allowed"
-                                                }`}
+                                                    }`}
                                                 onClick={handleDeleteWorkspace}
                                             >
                                                 Delete Workspace
@@ -194,7 +195,7 @@ const WorkspaceSetting = () => {
                                     </div>
                                 )}
                             </div>
-                            <AddMemberModal isOpen={isMemberModalOpen} onClose={() => setIsMemberModalOpen(false)}/>
+                            <AddMemberModal isOpen={isMemberModalOpen} onClose={() => setIsMemberModalOpen(false)} />
                         </div>
                     </div>
                 </div>
