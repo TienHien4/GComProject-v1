@@ -26,12 +26,12 @@ const WorkspaceSetting = () => {
         dispatch(deleteWorkspace(workspaceId));
         if (!error) {
             navigate('/user-workspace')
-            toast.success('DeletedSuccessfully');
+            toast.success('Deleted Workspace Successfully');
         } else {
-            toast.error('Deleted Workspace');
+            toast.error('Deleted Workspace Failed!');
         }
-
     }
+
     return (
         <div className="flex flex-col h-screen">
             {/* Navbar cố định trên cùng */}
@@ -57,7 +57,6 @@ const WorkspaceSetting = () => {
                                     <div className="text-lg font-semibold">{workspace?.name}</div>
                                     <div className="text-xs text-gray-500">Private</div>
                                 </div>
-
                             </div>
                             <button
                                 className="bg-blue-600 text-white px-4 py-1 rounded-sm flex items-center space-x-2 mt-4 md:mt-0"
@@ -115,18 +114,16 @@ const WorkspaceSetting = () => {
                             {/* Delete Workspace */}
                             <div className="mt-6">
                                 <button
-                                    onClick={() => setIsDeleteModalOpen(true)} // Mở modal khi nhấp
+                                    onClick={() => setIsDeleteModalOpen(true)}
                                     className="text-red-600 hover:underline"
                                 >
                                     Delete this Workspace?
                                 </button>
 
-                                {/* Modal Xóa Workspace */}
                                 {isDeleteModalOpen && (
                                     <div
                                         className="fixed inset-0 flex items-center justify-center bg-opacity-50 z-50">
                                         <div className="bg-white p-6 rounded-lg shadow-lg w-96 relative">
-                                            {/* Nút đóng modal */}
                                             <button
                                                 onClick={() => setIsDeleteModalOpen(false)}
                                                 className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
@@ -147,28 +144,23 @@ const WorkspaceSetting = () => {
                                                 </svg>
                                             </button>
 
-                                            {/* Tiêu đề modal */}
                                             <h3 className="text-lg font-semibold mb-4">Delete Workspace?</h3>
 
-                                            {/* Thông tin yêu cầu nhập tên Workspace */}
                                             <p className="text-sm text-gray-600 mb-2">
                                                 Enter the Workspace name <span
                                                     className="font-semibold">"{workspace?.name}"</span> to delete
                                             </p>
 
-                                            {/* Danh sách cảnh báo */}
                                             <div className="mb-4">
                                                 <p className="text-sm text-gray-600 font-semibold">Things to know:</p>
                                                 <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
                                                     <li>This is permanent and can’t be undone.</li>
                                                     <li>All boards in the Workspace will be closed.</li>
                                                     <li>Board admins can reopen boards.</li>
-                                                    <li>Board members will not be able to interact with closed boards.
-                                                    </li>
+                                                    <li>Board members will not be able to interact with closed boards.</li>
                                                 </ul>
                                             </div>
 
-                                            {/* Input để nhập tên Workspace */}
                                             <p className="text-sm text-gray-600 font-semibold mb-2">Enter the Workspace
                                                 name to delete</p>
                                             <input
@@ -179,7 +171,6 @@ const WorkspaceSetting = () => {
                                                 className="w-full p-2 border border-gray-300 rounded-sm mb-4 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
                                             />
 
-                                            {/* Nút xóa */}
                                             <button
                                                 disabled={workspaceInput !== workspace?.name}
                                                 className={`w-full py-2 rounded text-white ${workspaceInput === workspace?.name
