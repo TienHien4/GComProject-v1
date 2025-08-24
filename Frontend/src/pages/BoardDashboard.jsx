@@ -56,7 +56,7 @@ function BoardDashboard() {
 
                 {/* Nội dung bên phải */}
                 <div
-                    className="flex-1 flex flex-col overflow-hidden bg-cover bg-center"
+                    className="flex-1 flex flex-col overflow-hidden bg-cover bg-center ."
                     style={{ backgroundImage: `url(${board?.background})` }}
                 >
                     <div className="shrink-0">

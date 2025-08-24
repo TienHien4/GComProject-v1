@@ -28,6 +28,7 @@ const Home = () => {
             toast.error('Error refreshing token: ', error);
         }
     };
+    
 
     useEffect(() => {
         const accessToken = Cookies.get("accessToken");

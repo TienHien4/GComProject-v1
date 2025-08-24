@@ -1,0 +1,22 @@
+const express = require('express')
+const router = express.Router()
+const BoardController = require('../../app/controllers/apiController/BoardController')
+const verifyJWT = require('../../middlewares/verifyJWT')
+const verifyRoles = require('../../middlewares/verifyRoles')
+const checkBoardPermission = require('../../middlewares/checkBoardPermission')
+const checkReOrderListCardPermission = require('../../middlewares/checkReOrderListCardPermission')
+// router.get('/', verifyJWT, verifyRoles('user'), BoardController.getBoards)
+
+router.all('*', verifyJWT)
+router.get('/board-guest', BoardController.getBoardByMemberId)
+router.get('/', BoardController.getBoards)
+router.get('/:_id', BoardController.getBoardById)
+router.get('/workspace/:workspaceId', BoardController.getBoardByWorkspaceId)
+router.post('/', BoardController.createBoard)
+router.put('/re-card', checkReOrderListCardPermission, BoardController.updateCardIndex)
+router.put('/re-list',checkReOrderListCardPermission, BoardController.updateListIndex)
+router.put('/', checkBoardPermission, BoardController.updateBoard)
+router.put('/remove-member', checkBoardPermission, BoardController.removeMemberFromBoard)
+router.delete('/', checkBoardPermission, BoardController.deleteBoard)
+
+module.exports = router

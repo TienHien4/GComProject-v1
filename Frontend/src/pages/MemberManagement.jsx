@@ -12,6 +12,7 @@ const MemberManagement = () => {
   const { workspaceId } = useParams();
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
   const [selected, setSelected] = useState("admin");
+  
   const { user } = useUserFromToken();
   const { member, workspace } = useSelector((state) => state.workspace);
   const dispatch = useDispatch();

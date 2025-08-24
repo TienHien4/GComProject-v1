@@ -11,6 +11,7 @@ const UserWorkspace = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getWorkspaceByMemberId())
+        
         dispatch(getHistoryViewsByUserId())
     }, []);
 
